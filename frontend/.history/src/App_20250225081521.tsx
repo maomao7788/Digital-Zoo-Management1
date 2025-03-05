@@ -1,0 +1,35 @@
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
+import AnimalList from './pages/AnimalList';
+import CreateAnimal from './pages/CreateAnimal';
+import Login from './pages/Login';
+import PrivateRoute from './components/PrivateRoute';
+import { AppBar, Toolbar, Link, Button } from '@mui/material';
+import { logout } from './services/authApi';
+
+function App() {
+  const handleLogout = () => {
+    logout();
+    window.location.href = '/login'; // 清除 Token 后重定向到登录页
+  };
+
+  return (
+    <Router>
+      <AppBar position="static">
+        <Toolbar>
+          <Link href="/" color="inherit" underline="none" sx={{ mr: 2 }}>Animals</Link>
+          <Link href="/create" color="inherit" underline="none" sx={{ mr: 2 }}>Create Animal</Link>
+          <Link href="/login" color="inherit" underline="none" sx={{ mr: 2 }}>Login</Link>
+          <Button color="inherit" onClick={handleLogout}>Logout</Button> {/* 退出登录按钮 */}
+        </Toolbar>
+      </AppBar>
+
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<PrivateRoute><AnimalList /></PrivateRoute>} />
+        <Route path="/create" element={<PrivateRoute><CreateAnimal /></PrivateRoute>} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;

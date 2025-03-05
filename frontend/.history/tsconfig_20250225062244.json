@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",                      // 支持现代 JavaScript 特性
+    "lib": ["DOM", "ES2020"],                // 支持浏览器和 ES2020 标准
+    "allowJs": true,                         // 允许 JS 文件
+    "skipLibCheck": true,                    // 跳过库类型检查
+    "esModuleInterop": true,                 // 支持 CommonJS 模块
+    "allowSyntheticDefaultImports": true,    // 支持默认导入
+    "strict": true,                          // 启用严格模式
+    "forceConsistentCasingInFileNames": true,// 强制文件名大小写一致
+    "module": "ESNext",                      // 使用最新模块系统
+    "moduleResolution": "Node",              // Node.js 模块解析
+    "resolveJsonModule": true,               // 支持导入 JSON 文件
+    "isolatedModules": true,                 // 独立模块
+    "noEmit": true,                          // 不生成输出文件
+    "jsx": "react-jsx"                       // 支持 React JSX 转换（React 17+）
+  },
+  "include": ["src"],                        // 指定包含目录
+  "exclude": ["node_modules"]                // 排除 node_modules
+}
